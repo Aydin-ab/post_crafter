@@ -80,7 +80,7 @@ export OPENROUTER_KEY="your-openrouter-key"  # optional
 ```
 
 Or **create a `.env` file** in your project root (if you’re using [python-dotenv](https://pypi.org/project/python-dotenv/)):
-
+The `.env.sample` is just a template. The file name MUST BE `.env`
 ```
 CLOUDFLARE_API_TOKEN=your-cloudflare-api-token
 CLOUDFLARE_ACCOUNT_ID=your-cloudflare-account-id
@@ -92,23 +92,24 @@ OPENROUTER_KEY=your-openrouter-key
 
 ## Getting Your API Keys
 
-### Cloudflare API Token
+### Cloudflare API Token and Account ID
 
-1. Log in to [Cloudflare dashboard](https://dash.cloudflare.com/).
-2. Go to **My Profile** → **API Tokens**.
-3. Create a token with the necessary permissions for AI generation (refer to Cloudflare’s docs).
-4. Copy the token and set it as `CLOUDFLARE_API_TOKEN`.
+1. Log in to [Cloudflare dashboard](https://dash.cloudflare.com/) and select your account.
+2. Go to **AI** → **Workers AI**.
+3. Select **Use REST API**
+4. Select **Create a Workers AI API Token**.
+5. Select **Create a Workers AI API Token**.
+6. Select **Create API Token**.
+7. Copy the token and set it as `CLOUDFLARE_API_TOKEN`.
+8. The account ID will be displayed on the same page, copy it and set it as `CLOUDFLARE_ACCOUNT_ID`
 
-### Cloudflare Account ID
-
-Your Cloudflare **Account ID** can be found in your Cloudflare dashboard’s top-level account settings. Assign it to `CLOUDFLARE_ACCOUNT_ID`.
-
-### OpenRouter Key (Optional)
+### OpenRouter Key
 
 If you have an [OpenRouter account](https://openrouter.ai/):
 
-1. Retrieve your API key from OpenRouter’s user settings.
-2. Set the environment variable `OPENROUTER_KEY`.
+1. Go to your user settings (your profile picture in the top right).
+2. Go to `Keys`.
+3. Create a key, copy it and set it as `OPENROUTER_KEY`
 
 ---
 
@@ -117,7 +118,7 @@ If you have an [OpenRouter account](https://openrouter.ai/):
 After installation, you should have the command `post-crafter`. Run:
 
 ```bash
-llm --help
+post-crafter --help
 ```
 
 This prints top-level usage and subcommands. Each subcommand also accepts `--help`.
@@ -174,6 +175,5 @@ Below is a quick overview of available subcommands.
 - **Check versions**:  
   Run `pip list` to confirm you have `requests`, `python-dotenv`, etc. installed.
 
-If you have further questions or encounter issues, please open a GitHub Issue in this repository. 
 
 Happy Crafting!
