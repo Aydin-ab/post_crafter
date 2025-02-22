@@ -1,5 +1,3 @@
-Below is an example **README.md** you might include in your repository. Feel free to adjust the wording, formatting, and details to match your exact project needs:
-
 ---
 
 # Post Crafter
