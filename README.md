@@ -34,7 +34,7 @@ Below is an example **README.md** you might include in your repository. Feel fre
 
 ## Requirements
 
-- Python 3.7 or higher
+- Python 3.12 or higher
 - [pip](https://pip.pypa.io/en/stable/installing/) for package management
 
 ---
@@ -115,6 +115,7 @@ If you have an [OpenRouter account](https://openrouter.ai/):
 
 ## Usage
 
+### 1. Command-Line Interface
 After installation, you should have the command `post-crafter`. Run:
 
 ```bash
@@ -123,7 +124,7 @@ post-crafter --help
 
 This prints top-level usage and subcommands. Each subcommand also accepts `--help`.
 
-### Available Commands
+#### Available Commands
 
 Below is a quick overview of available subcommands.
 
@@ -162,16 +163,30 @@ Below is a quick overview of available subcommands.
    - Generates images and captions for each event date.
    - Stores them in the directory along with an `schedule.json` file.
 
+### 1. Streamlit App Interface
+I’ve also provided a Streamlit front-end to make it easier to interact with the tool:
+1. **Install dependencies (if you haven’t already):**
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **Run the Streamlit app:**
+   ```bash
+   streamlit run post_crafter/app.py
+   ```
+
+3. **Open the printed URL (usually http://localhost:8501) in your web browser. You’ll see:**
+- Text input fields for generating images, captions, calendars, etc.
+- A button to run the generation task
 ---
 
 ## Troubleshooting
 
 - **Module not found** or **Command not found**:  
-  Make sure you installed the package (`pip install -e .`) and that your Python environment is active.  
+  Make sure you installed the package (`pip install -e .`) and that your Python environment is active and the right version `>3.12`.  
 - **Permission errors on Linux**:  
   You might need `sudo pip install -e .` if installing system-wide (though a virtual environment is recommended).  
 - **Missing environment variables**:  
-  Double-check `.env` or environment variables if you get authentication errors from Cloudflare or OpenRouter.  
+  Make sure to use a `.env`to store the API keys, do not use the `.env.sample`, it's only here for guidance. Double-check your `.env` or environment variables if you get authentication errors from Cloudflare or OpenRouter.  
 - **Check versions**:  
   Run `pip list` to confirm you have `requests`, `python-dotenv`, etc. installed.
 
