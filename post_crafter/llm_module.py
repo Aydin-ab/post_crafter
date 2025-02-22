@@ -58,19 +58,6 @@ class LLM:
         with open(output_file, "wb") as file:
             file.write(response.content)
 
-    '''
-    def generate_caption(self, product_description):
-        prompt = f"Create adequate and trend-relevant captions for the following product description:\n{product_description}\n\nCaption:"
-        response = requests.post(
-            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/ai/run/{self.txt_to_txt_model}",
-            headers={"Authorization": f"Bearer {self.api_token}"},
-            json={"messages": [
-                {"role": "system", "content": self.company_description},
-                {"role": "user", "content": prompt}
-            ]}
-        )
-        return response.json()["result"]["response"]
-    '''
 
     def generate_caption(self, product_description):
         prompt = f"Create one adequate and trend-relevant caption for the following product description:\n{product_description}\n\nCaption:"
@@ -89,27 +76,6 @@ class LLM:
         )
         return completion.choices[0].message.content
   
-    '''
-    def generate_calendar_event(self, product_description, frequency_days, start_date= None, num_events= 10):
-        # If the start date is not provided, use today's date
-        if not start_date:
-            start_date = datetime.now().strftime('%m/%d/%Y')
-
-        prompt = f"Create a posting calendar for the following product description:\n{product_description}. The events should happen every {frequency_days} days starting on the {start_date}. Create the next {num_events} events\n\nCalendar:"
-        response = requests.post(
-            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/ai/run/{self.txt_to_txt_model}",
-            headers={"Authorization": f"Bearer {self.api_token}"},
-            json={
-                "prompt": prompt,
-                "messages": [
-                {"role": "system", "content": self.company_description},
-                {"role": "user", "content": prompt}
-                ],
-                "max_tokens": 2048,
-            }
-        )
-        return response.json()["result"]["response"]
-    '''
 
     def generate_events_schedule(self, product_description, frequency_days, start_date= None, num_events= 10):
         # If the start date is not provided, use today's date
@@ -174,6 +140,26 @@ class LLM:
         with open(f"{project_name}/schedule.json", "w") as file:
             json.dump(events, file)
         return events
+    
+
+    '''
+    def generate_video(self, product_description, output_file="output.mp4", caption=None):
+        # Specify in the prompt that the video must be photo realist
+        prompt = f"Realistic video of the following product description:\n{product_description}"
+        # If a caption is provided, add it to the prompt
+        if caption:
+            prompt += f"\n\nCaption of the video should be: {caption}"
+        # Call the API to generate the video
+        # We suppose the model is saved as self.txt_to_video_model
+        response = requests.post(
+                    f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/ai/run/{self.txt_to_video_model}",
+                    headers={"Authorization": f"Bearer {self.api_token}"},
+                    json={"prompt": prompt}
+                )
+                
+        with open(output_file, "wb") as file:
+            file.write(response.content)
+    '''
 
 
   
