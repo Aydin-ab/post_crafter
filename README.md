@@ -50,7 +50,7 @@ Below is an example **README.md** you might include in your repository. Feel fre
    cd post_crafter
    ```
 
-### Using pip install -e . (Recommended)
+*Using pip install -e . (Recommended)*
 
 3. **Make sure** you have Python >=3.12 installed
 4. **Install** in editable mode (developer mode):
@@ -63,7 +63,7 @@ Below is an example **README.md** you might include in your repository. Feel fre
 
 > **Note**: If you want to install in a virtual environment, create/activate it first.
 
-### Using conda_env.yaml
+*Using conda_env.yaml*
 
 3. **Run** 
    ```bash
@@ -116,7 +116,7 @@ OPENROUTER_KEY=your-openrouter-key
 
 ## Getting Your API Keys
 
-### Cloudflare API Token and Account ID
+*Cloudflare API Token and Account ID*
 
 1. Log in to [Cloudflare dashboard](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** → **Workers AI**.
@@ -127,7 +127,7 @@ OPENROUTER_KEY=your-openrouter-key
 7. Copy the token and set it as `CLOUDFLARE_API_TOKEN`.
 8. The account ID will be displayed on the same page, copy it and set it as `CLOUDFLARE_ACCOUNT_ID`
 
-### OpenRouter Key
+*OpenRouter Key*
 
 If you have an [OpenRouter account](https://openrouter.ai/):
 
@@ -139,7 +139,7 @@ If you have an [OpenRouter account](https://openrouter.ai/):
 
 ## Usage
 
-### 1. Command-Line Interface
+*Command-Line Interface*
 After installation, you should have the command `post-crafter`. Run:
 
 ```bash
@@ -147,8 +147,6 @@ post-crafter --help
 ```
 
 This prints top-level usage and subcommands. Each subcommand also accepts `--help`.
-
-#### Available Commands
 
 Below is a quick overview of available subcommands.
 
@@ -164,9 +162,9 @@ Below is a quick overview of available subcommands.
    ```
    Prints a generated caption to stdout.
 
-3. **Generate Calendar Event**
+3. **Generate Events Schedule**
    ```bash
-   post-crafter generate_calendar_event \
+   post-crafter generate_events_schedule \
        --product_description "Gym pair of shoe" \
        --frequency_days 7 \
        --start_date "03/01/2025" \
@@ -174,9 +172,9 @@ Below is a quick overview of available subcommands.
    ```
    Prints out a schedule of events.
 
-4. **Generate Calendar**
+4. **Generate Posts Schedule**
    ```bash
-   llm generate_calendar \
+   post-crafter generate_posts_schedule \
        --product_description "Smooth bamboo bedsheets spring collection" \
        --frequency_days 7 \
        --start_date "02/25/2025" \
@@ -187,7 +185,7 @@ Below is a quick overview of available subcommands.
    - Generates images and captions for each event date.
    - Stores them in the directory along with an `schedule.json` file.
 
-### 1. Streamlit App Interface
+*Streamlit App Interface*
 I’ve also provided a Streamlit front-end to make it easier to interact with the tool:
 1. **Install dependencies (if you haven’t already):**
    ```bash
@@ -214,7 +212,7 @@ I’ve also provided a Streamlit front-end to make it easier to interact with th
 - **Check versions**:  
   Run `pip list` to confirm you have `requests`, `python-dotenv`, etc. installed.
 
-
+---
 
 ## Report
 *What you've built, and any instructions for how to run it or use it*
