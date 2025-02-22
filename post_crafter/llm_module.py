@@ -166,5 +166,5 @@ class LLM:
 
   
 # Usage:
-llm = LLM()
-print(llm.generate_events_schedule("a pair of sport shoe that you can wear to the gym. They should be comfortable, durable and stylish.", 7, "01/01/2023", 3,))
+#llm = LLM()
+#print(llm.generate_events_schedule("a pair of sport shoe that you can wear to the gym. They should be comfortable, durable and stylish.", 7, "01/01/2023", 3,))

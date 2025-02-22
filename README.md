@@ -27,8 +27,8 @@ Below is an example **README.md** you might include in your repository. Feel fre
 
 - **Generate Images**: Send text prompts to Cloudflare’s image-generation model.
 - **Generate Captions**: Produce trend-relevant captions for social media.
-- **Generate Calendars**: Build event calendars, complete with images and captions for each date.
-- **OpenRouter Integration**: Optionally use an alternative model via OpenRouter if desired.
+- **Generate Events Schedule**: Build a schedule of events, given a product description and the events frequency in days.
+- **Generate Posts Schedule***: Build a schedule of posts, complete with images and captions for each date.
 
 ---
 
@@ -43,14 +43,14 @@ Below is an example **README.md** you might include in your repository. Feel fre
 
 1. **Clone** this repository (or download the source):
    ```bash
-   git clone https://github.com/your-username/post_crafter.git
+   git clone https://github.com/Aydin-ab/post_crafter.git
    ```
 2. **Navigate** into the project directory:
    ```bash
    cd post_crafter
    ```
 
-*Using pip install -e . (Recommended)*
+*Alternative 1: Using pip install -e . (Recommended)*
 
 3. **Make sure** you have Python >=3.12 installed
 4. **Install** in editable mode (developer mode):
@@ -63,7 +63,7 @@ Below is an example **README.md** you might include in your repository. Feel fre
 
 > **Note**: If you want to install in a virtual environment, create/activate it first.
 
-*Using conda_env.yaml*
+*Alternative 2: Using conda_env.yaml*
 
 3. **Run** 
    ```bash
@@ -93,7 +93,7 @@ Post Crafter looks for the following environment variables:
   Your Cloudflare API token for AI services.  
 - `CLOUDFLARE_ACCOUNT_ID`  
   Your Cloudflare account ID.  
-- `OPENROUTER_KEY` *(optional)*  
+- `OPENROUTER_KEY`
   An API key for OpenRouter if you want to use the OpenRouter-based endpoints.
 
 You can **set** these environment variables manually:
@@ -122,25 +122,26 @@ OPENROUTER_KEY=your-openrouter-key
 2. Go to **AI** → **Workers AI**.
 3. Select **Use REST API**
 4. Select **Create a Workers AI API Token**.
-5. Select **Create a Workers AI API Token**.
-6. Select **Create API Token**.
-7. Copy the token and set it as `CLOUDFLARE_API_TOKEN`.
-8. The account ID will be displayed on the same page, copy it and set it as `CLOUDFLARE_ACCOUNT_ID`
+5. Select **Create API Token**.
+6. Copy the token and set it as `CLOUDFLARE_API_TOKEN`.
+7. The account ID will be displayed on the same page, copy it and set it as `CLOUDFLARE_ACCOUNT_ID`
 
 *OpenRouter Key*
 
-If you have an [OpenRouter account](https://openrouter.ai/):
+Create an account if you don't have one already [OpenRouter account](https://openrouter.ai/):
 
 1. Go to your user settings (your profile picture in the top right).
-2. Go to `Keys`.
+2. Go to `Keys`
 3. Create a key, copy it and set it as `OPENROUTER_KEY`
 
 ---
 
 ## Usage
 
-*Command-Line Interface*
-After installation, you should have the command `post-crafter`. Run:
+*Option 1 : Command-Line Interface*
+
+After installation, you should have the command `post-crafter`. 
+Run:
 
 ```bash
 post-crafter --help
@@ -148,9 +149,41 @@ post-crafter --help
 
 This prints top-level usage and subcommands. Each subcommand also accepts `--help`.
 
+```
+usage: post-crafter [-h] {generate_image,generate_caption,generate_events_schedule,generate_posts_schedule} ...
+
+CLI tool for interacting with the LLM class.
+
+options:
+  -h, --help            show this help message and exit
+
+Commands:
+  {generate_image,generate_caption,generate_events_schedule,generate_posts_schedule}
+                        Choose a command to run.
+    generate_image      Generate an image based on a product description.
+    generate_caption    Generate a caption for a product description.
+    generate_events_schedule
+                        Generate a schedule of events for a product.
+    generate_posts_schedule
+                        Generate a calendar of events, including images and captions.
+```
+
 Below is a quick overview of available subcommands.
 
 1. **Generate Image**
+   ```bash
+   post-crafter generate_image --help
+   ```
+   ```
+   usage: post-crafter generate_image [-h] --product_description PRODUCT_DESCRIPTION
+
+   options:
+   -h, --help            show this help message and exit
+   --product_description PRODUCT_DESCRIPTION, -p PRODUCT_DESCRIPTION
+                           A description of the product to generate an image for.
+   ```
+
+   Example:
    ```bash
    post-crafter generate_image --product_description "Stylish running shoes"
    ```
@@ -158,11 +191,44 @@ Below is a quick overview of available subcommands.
 
 2. **Generate Caption**
    ```bash
+   post-crafter generate_caption --help
+   ```
+   ```
+   usage: post-crafter generate_caption [-h] --product_description PRODUCT_DESCRIPTION
+
+   options:
+   -h, --help            show this help message and exit
+   --product_description PRODUCT_DESCRIPTION, -p PRODUCT_DESCRIPTION
+                           Product description to generate a caption for.
+   ```
+
+   Example:
+   ```bash
    post-crafter generate_caption --product_description "Comfortable and trendy sunglasses"
    ```
    Prints a generated caption to stdout.
 
 3. **Generate Events Schedule**
+   ```bash
+   post-crafter generate_events_schedule --help
+   ```
+   ```
+   usage: post-crafter generate_events_schedule [-h] --product_description PRODUCT_DESCRIPTION --frequency_days FREQUENCY_DAYS
+                                                [--start_date START_DATE] [--num_events NUM_EVENTS]
+
+   options:
+   -h, --help            show this help message and exit
+   --product_description PRODUCT_DESCRIPTION, -p PRODUCT_DESCRIPTION
+                           A description of the product to create a schedule of events for.
+   --frequency_days FREQUENCY_DAYS, -f FREQUENCY_DAYS
+                           Interval (in days) between events.
+   --start_date START_DATE, -s START_DATE
+                           Start date in MM/DD/YYYY format. Defaults to today's date if not provided.
+   --num_events NUM_EVENTS, -n NUM_EVENTS
+                           Number of events to create in the calendar.
+   ```
+
+   Example:
    ```bash
    post-crafter generate_events_schedule \
        --product_description "Gym pair of shoe" \
@@ -173,6 +239,28 @@ Below is a quick overview of available subcommands.
    Prints out a schedule of events.
 
 4. **Generate Posts Schedule**
+   ```bash
+   post-crafter generate_posts_schedule --help
+   ```
+   ```
+   usage: post-crafter generate_posts_schedule [-h] --product_description PRODUCT_DESCRIPTION --frequency_days FREQUENCY_DAYS
+                                             [--start_date START_DATE] [--num_events NUM_EVENTS] [--project_name PROJECT_NAME]
+
+   options:
+   -h, --help            show this help message and exit
+   --product_description PRODUCT_DESCRIPTION, -p PRODUCT_DESCRIPTION
+                           A product description or topic for generating events.
+   --frequency_days FREQUENCY_DAYS, -f FREQUENCY_DAYS
+                           Interval (in days) between events.
+   --start_date START_DATE, -s START_DATE
+                           Start date in MM/DD/YYYY format. Defaults to today's date if not provided.
+   --num_events NUM_EVENTS, -n NUM_EVENTS
+                           Number of events to create in the calendar.
+   --project_name PROJECT_NAME, -pn PROJECT_NAME
+                           Optional custom project name. If not provided, a short sanitized name from product_description is used.
+   ```
+
+   Example:
    ```bash
    post-crafter generate_posts_schedule \
        --product_description "Smooth bamboo bedsheets spring collection" \
@@ -185,7 +273,7 @@ Below is a quick overview of available subcommands.
    - Generates images and captions for each event date.
    - Stores them in the directory along with an `schedule.json` file.
 
-*Streamlit App Interface*
+*Option 2: Streamlit App Interface*
 I’ve also provided a Streamlit front-end to make it easier to interact with the tool:
 1. **Install dependencies (if you haven’t already):**
    ```bash
@@ -193,7 +281,7 @@ I’ve also provided a Streamlit front-end to make it easier to interact with th
    ```
 2. **Run the Streamlit app:**
    ```bash
-   streamlit run post_crafter/app.py
+   streamlit run app.py
    ```
 
 3. **Open the printed URL (usually http://localhost:8501) in your web browser. You’ll see:**
