@@ -171,7 +171,7 @@ class LLM:
             events.append({"date": date_str, "caption": caption, "image": image_file})
         
         # Save the events to a json file
-        with open(f"{project_name}/events.json", "w") as file:
+        with open(f"{project_name}/schedule.json", "w") as file:
             json.dump(events, file)
         return events
 
