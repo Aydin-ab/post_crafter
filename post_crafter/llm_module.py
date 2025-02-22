@@ -57,6 +57,8 @@ class LLM:
                 )
         with open(output_file, "wb") as file:
             file.write(response.content)
+        
+        return output_file
 
 
     def generate_caption(self, product_description):
@@ -156,7 +158,7 @@ class LLM:
                     headers={"Authorization": f"Bearer {self.api_token}"},
                     json={"prompt": prompt}
                 )
-                
+
         with open(output_file, "wb") as file:
             file.write(response.content)
     '''
@@ -164,5 +166,5 @@ class LLM:
 
   
 # Usage:
-#llm = LLM()
-#print(llm.generate_events_schedule("a pair of sport shoe that you can wear to the gym. They should be comfortable, durable and stylish.", 7, "01/01/2023", 3,))
+llm = LLM()
+print(llm.generate_events_schedule("a pair of sport shoe that you can wear to the gym. They should be comfortable, durable and stylish.", 7, "01/01/2023", 3,))

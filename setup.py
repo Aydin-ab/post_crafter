@@ -10,6 +10,7 @@ setuptools.setup(
         "requests>=2.32.3",
         "python-dotenv>=1.0.1",
         "openai>=1.63.2",
+        "streamlit>=1.42.2"
     ],
     entry_points={
         # This is the magic that creates a console command called 'llm'
