@@ -1,5 +1,3 @@
----
-
 # Post Crafter
 
 **Post Crafter** is a Python-based CLI tool for creating images, captions, and event calendars powered by Cloudflare’s AI services (and optionally OpenRouter). It streamlines content creation by automating tasks like generating product images, writing captions, and building posting schedules.
