@@ -49,7 +49,11 @@ Below is an example **README.md** you might include in your repository. Feel fre
    ```bash
    cd post_crafter
    ```
-3. **Install** in editable mode (developer mode):
+
+### Using pip install -e . (Recommended)
+
+3. **Make sure** you have Python >=3.12 installed
+4. **Install** in editable mode (developer mode):
    ```bash
    pip install -e .
    ```
@@ -58,6 +62,26 @@ Below is an example **README.md** you might include in your repository. Feel fre
    - Registers the CLI tool `post-crafter` on your PATH.
 
 > **Note**: If you want to install in a virtual environment, create/activate it first.
+
+### Using conda_env.yaml
+
+3. **Run** 
+   ```bash
+   conda env create -f conda_env.yaml
+   ```
+   This command:
+   - Create a new conda environment `post_crafter` with Python 3.12 and the dependencies in the `requirements.txt`file.
+
+4. **Enter** the new conda environment once it's done being created.
+   ```bash
+   conda activatepost_crafter
+   ```
+5. **Install** in editable mode (developer mode):
+   ```bash
+   pip install -e .
+   ```
+   This command:
+   - Registers the CLI tool `post-crafter` on your PATH.
 
 ---
 
