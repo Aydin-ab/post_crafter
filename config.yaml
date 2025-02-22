@@ -1,0 +1,6 @@
+name: scrollmark
+dependencies:
+  - pip=23.3.1
+  - python=3.12
+  - pip:
+    - -r requirements.txt

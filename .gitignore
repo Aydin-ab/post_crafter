@@ -1,0 +1,26 @@
+# -----------------------------
+# Python Bytecode and Caches
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -----------------------------
+# Distribution / Packaging
+# -----------------------------
+*.egg-info/
+.egg/
+build/
+dist/
+
+# -----------------------------
+# OS-Specific
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# If .env contains secrets
+# uncomment to exclude it
+# -----------------------------
+.env
