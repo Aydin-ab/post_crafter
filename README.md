@@ -191,4 +191,34 @@ I’ve also provided a Streamlit front-end to make it easier to interact with th
   Run `pip list` to confirm you have `requests`, `python-dotenv`, etc. installed.
 
 
+
+## Report
+*What you've built, and any instructions for how to run it or use it*
+I built a quick prototype of a caption/image generator using FREE APIs to generative models 
+- We can combine both to generate a schedule of posts for social media marketing: the text-to-text model generates captions, and the text-to-image model generates the post's image
+- We can also generate a schedule of events for a calendar, and then generate posts for each event
+
+*What AI tools did you use while working?*
+- I used LLama 3-8B for the text-to-text model, and dreamshaper for the text-to-image model
+I picked these models because they are free and have a good balance between speed and quality
+The data we're working on are quite standard (general purpose english text and images), so I didn't need to use a more specialized or overengineered model.
+Main reason was to keep the costs low (i.e ZERO lol). But more on that later.
+
+- I use the OpenRouter API to call the text-to-text model, and the Cloudfare API to call the text-to-image model
+I could have used Cloudfare for Llama too but the calls were much much slower than OpenRouter (10sec vs 3sec)
+I also used my personal chatgpt-o1 to help me with streamlit and to write the Cloudfare/OpenRouter API requests given their documentation
+
+*What features would you add if you were to continue to extend the project?*
+- I would add the last feature to generate a video given an image/audio/caption but there was no free API for that. Video generation is quite expensive due to the amount of data/bandwith involved
+Given a budget I would use the Stable Diffusion API to generate the video. I've wrote the pseudo-code/template function in the LLM class but it's commented out
+
+- Given a budget I would also use better text-to-image models and get hyper-realistic high definition images, but it's quite expensive to call these APIs
+
+- I would also work on the UI/UX to make it more user-friendly and add more options to customize the generated content
+For example I would have add a calendar and populate it with the generated events & posts, and allow the user to view the events and posts in a more visual way
+
+- I would also add more error handling and logging to make the tool more robust. In case the API calls fail, the user should know what happened
+
+
+
 Happy Crafting!

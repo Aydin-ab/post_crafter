@@ -79,6 +79,7 @@ def main():
     st.markdown("*What features would you add if you were to continue to extend the project?*")
     st.markdown("- I would add the last feature to generate a video given an image/audio/caption but there was no free API for that. Video generation is quite expensive due to the amount of data/bandwith involved"
                 "\nGiven a budget I would use the Stable Diffusion API to generate the video. I've wrote the pseudo-code/template function in the LLM class but it's commented out"
+                "\n- Given a budget I would also use better text-to-image models and get hyper-realistic high definition images, but it's quite expensive to call these APIs"
                 "\n- I would also work on the UI/UX to make it more user-friendly and add more options to customize the generated content"
                 "\nFor example I would have add a calendar and populate it with the generated events & posts, and allow the user to view the events and posts in a more visual way"
                 "\n- I would also add more error handling and logging to make the tool more robust. In case the API calls fail, the user should know what happened")
