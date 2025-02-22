@@ -68,7 +68,7 @@ def main():
         "--num_events",
         "-n",
         type=int,
-        default=10,
+        default=5,
         help="Number of events to create in the calendar."
     )
 
@@ -85,14 +85,14 @@ def main():
         "--product_description",
         "-p",
         required=True,
-        help="A product description or topic for generating events."
+        help="A description of the product to create a schedule of posts for."
     )
     generate_posts_schedule_parser.add_argument(
         "--frequency_days",
         "-f",
         type=int,
         required=True,
-        help="Interval (in days) between events."
+        help="Interval (in days) between posts."
     )
     generate_posts_schedule_parser.add_argument(
         "--start_date",
@@ -101,11 +101,11 @@ def main():
         help="Start date in MM/DD/YYYY format. Defaults to today's date if not provided."
     )
     generate_posts_schedule_parser.add_argument(
-        "--num_events",
+        "--num_posts",
         "-n",
         type=int,
-        default=10,
-        help="Number of events to create in the calendar."
+        default=5,
+        help="Number of posts to create in the calendar."
     )
     generate_posts_schedule_parser.add_argument(
         "--project_name",
@@ -146,7 +146,7 @@ def main():
             product_description=args.product_description,
             frequency_days=args.frequency_days,
             start_date=args.start_date,
-            num_events=args.num_events,
+            num_posts=args.num_posts,
             project_name=args.project_name
         )
         print("Calendar generated successfully.\nEvents:\n", json.dumps(result, indent=2))

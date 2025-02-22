@@ -1,6 +1,6 @@
 # Post Crafter
 
-**Post Crafter** is a Python-based CLI tool for creating images, captions, and event calendars powered by Cloudflare’s AI services (and optionally OpenRouter). It streamlines content creation by automating tasks like generating product images, writing captions, and building posting schedules.
+**Post Crafter** is a Python-based tool for creating images, captions, and event calendars powered by Cloudflare’s AI services (and optionally OpenRouter). It streamlines content creation by automating tasks like generating product images, writing captions, and building posting schedules.
 
 ## Table of Contents
 
@@ -8,14 +8,9 @@
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Configuration](#configuration)
-5. [Usage](#usage)
-   - [Available Commands](#available-commands)
-6. [Getting Your API Keys](#getting-your-api-keys)
-   - [Cloudflare API Token](#cloudflare-api-token)
-   - [Cloudflare Account ID](#cloudflare-account-id)
-   - [OpenRouter Key (Optional)](#openrouter-key-optional)
-7. [License](#license)
-8. [Troubleshooting](#troubleshooting)
+5. [Getting Your API Keys](#getting-your-api-keys)
+6. [Usage](#usage)
+7. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -96,16 +91,16 @@ You can **set** these environment variables manually:
 ```bash
 export CLOUDFLARE_API_TOKEN="your-cloudflare-api-token"
 export CLOUDFLARE_ACCOUNT_ID="your-cloudflare-account-id"
-export OPENROUTER_KEY="your-openrouter-key"  # optional
+export OPENROUTER_KEY="your-openrouter-key"
 ```
 
 Or **create a `.env` file** in your project root (if you’re using [python-dotenv](https://pypi.org/project/python-dotenv/)):
-The `.env.sample` is just a template. The file name MUST BE `.env`
 ```
 CLOUDFLARE_API_TOKEN=your-cloudflare-api-token
 CLOUDFLARE_ACCOUNT_ID=your-cloudflare-account-id
 OPENROUTER_KEY=your-openrouter-key
 ```
+The `.env.sample` is just a template. The file name MUST BE `.env`
 
 ---
 
@@ -240,18 +235,18 @@ Below is a quick overview of available subcommands.
    ```
    ```
    usage: post-crafter generate_posts_schedule [-h] --product_description PRODUCT_DESCRIPTION --frequency_days FREQUENCY_DAYS
-                                             [--start_date START_DATE] [--num_events NUM_EVENTS] [--project_name PROJECT_NAME]
+                                             [--start_date START_DATE] [--num_posts NUM_POSTS] [--project_name PROJECT_NAME]
 
    options:
    -h, --help            show this help message and exit
    --product_description PRODUCT_DESCRIPTION, -p PRODUCT_DESCRIPTION
-                           A product description or topic for generating events.
+                           A description of the product to create a schedule of posts for.
    --frequency_days FREQUENCY_DAYS, -f FREQUENCY_DAYS
-                           Interval (in days) between events.
+                           Interval (in days) between posts.
    --start_date START_DATE, -s START_DATE
                            Start date in MM/DD/YYYY format. Defaults to today's date if not provided.
-   --num_events NUM_EVENTS, -n NUM_EVENTS
-                           Number of events to create in the calendar.
+   --num_posts NUM_POSTS, -n NUM_POSTS
+                           Number of posts to create in the calendar.
    --project_name PROJECT_NAME, -pn PROJECT_NAME
                            Optional custom project name. If not provided, a short sanitized name from product_description is used.
    ```
@@ -326,5 +321,6 @@ For example I would have add a calendar and populate it with the generated event
 - I would also add more error handling and logging to make the tool more robust. In case the API calls fail, the user should know what happened
 
 
+---
 
 Happy Crafting!

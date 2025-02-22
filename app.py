@@ -28,8 +28,10 @@ def main():
     elif choice == "Generate Events Schedule":  # Generate Calendar
         product_description = st.text_input("Product Description", "")
         frequency_days = st.number_input("Frequency Days", min_value=1, value=7)
-        num_events = st.number_input("Number of Events", min_value=1, max_value=20, value=10)
-        start_date = st.date_input("Start Date", value=None)
+        num_events = st.number_input("Number of Events", min_value=1, max_value=20, value=5)
+        # Make start_date default today's date
+        start_date = st.date_input("Start Date", value="today").strftime('%m/%d/%Y')
+
         if st.button("Generate Calendar"):
             events = llm.generate_events_schedule(
                 product_description=product_description,
@@ -42,13 +44,13 @@ def main():
     elif choice == "Generate Posts Schedule":
         product_description = st.text_input("Product Description", "")
         frequency_days = st.number_input("Frequency Days", min_value=1, value=7)
-        num_events = st.number_input("Number of Events", min_value=1, max_value=20, value=10)
-        start_date = st.date_input("Start Date", value=None)
+        num_posts = st.number_input("Number of Posts", min_value=1, max_value=20, value=5)
+        start_date = st.date_input("Start Date", value="today").strftime('%m/%d/%Y')
         if st.button("Generate Posts Schedule"):
             posts = llm.generate_posts_schedule(
                 product_description=product_description,
                 frequency_days=frequency_days,
-                num_events=num_events,
+                num_posts=num_posts,
                 start_date=start_date
             )
             # Format of posts is a list of {"date": date_str, "caption": caption, "image": image_file}
